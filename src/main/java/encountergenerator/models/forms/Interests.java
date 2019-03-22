@@ -1,40 +1,47 @@
 package encountergenerator.models.forms;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
 public class Interests {
+    @Id
+    @GeneratedValue
     private Integer id;
-    private String desc;
+
+    @NotNull
+    @Size(min=3, max=15)
+    private String description;
+
     private Integer userid;
     private Date createdate;
-    private Date update;
+    private Date updated;
     private Boolean shared;
 
-    public Interests(Integer id, String desc, Integer userid, Date createdate, Date update, Boolean shared) {
-        this.id = id;
-        this.desc = desc;
+    public Interests(String description, Integer userid, Date createdate, Date updated, Boolean shared) {
+        this.description = description;
         this.userid = userid;
         this.createdate = createdate;
-        this.update = update;
+        this.updated = updated;
         this.shared = shared;
+    }
+
+    public Interests(){
+
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getDescription() {
+        return description;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getUserid() {
@@ -54,11 +61,11 @@ public class Interests {
     }
 
     public Date getUpdate() {
-        return update;
+        return updated;
     }
 
-    public void setUpdate(Date update) {
-        this.update = update;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     public Boolean getShared() {

@@ -4,6 +4,10 @@ import javax.persistence.*;
 
 @Entity
 public class Encounters {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private Integer level;
     private String environment;
     private Integer partysize;
@@ -27,6 +31,12 @@ public class Encounters {
         this.loot = loot;
         this.nummobs = nummobs;
     }
+
+    public Encounters(){
+
+    }
+
+    public Integer getId() { return id; }
 
     public Integer getLevel() {
         return level;

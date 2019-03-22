@@ -1,38 +1,46 @@
 package encountergenerator.models.forms;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
 public class Treasures {
+
+    @Id
+    @GeneratedValue
     private Integer id;
+
+    @NotNull
+    @Size(min=3, max=15)
     private String name;
+
     private String type;
     private Integer value;
-    private String desc;
+    private String description;
     private Integer userid;
     private Date createdate;
-    private Date update;
+    private Date updated;
     private Boolean shared;
 
-    public Treasures(Integer id, String name, String type, Integer value, String desc, Integer userid, Date createdate, Date update, Boolean shared) {
-        this.id = id;
+    public Treasures(String name, String type, Integer value, String description, Integer userid, Date createdate, Date updated, Boolean shared) {
         this.name = name;
         this.type = type;
         this.value = value;
-        this.desc = desc;
+        this.description = description;
         this.userid = userid;
         this.createdate = createdate;
-        this.update = update;
+        this.updated = updated;
         this.shared = shared;
+    }
+
+    public Treasures(){
+
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -59,12 +67,12 @@ public class Treasures {
         this.value = value;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getUserid() {
@@ -83,12 +91,12 @@ public class Treasures {
         this.createdate = createdate;
     }
 
-    public Date getUpdate() {
-        return update;
+    public Date getUpdated() {
+        return updated;
     }
 
     public void setUpdate(Date update) {
-        this.update = update;
+        this.updated = updated;
     }
 
     public Boolean getShared() {

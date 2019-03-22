@@ -1,12 +1,21 @@
 package encountergenerator.models.forms;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
 public class Creatures {
+
+    @Id
+    @GeneratedValue
     private Integer ID;
+
+    @NotNull
+    @Size(min=3, max=15)
     private String name;
+
     private String type;
     private Float cr;
     private Integer str;
@@ -18,14 +27,13 @@ public class Creatures {
     private Integer ac;
     private Integer hp;
     private String size;
-    private String desc;
+    private String description;
     private Integer userid;
     private Date createdate;
-    private Date update;
+    private Date updated;
     private Boolean shared;
 
-    public Creatures(Integer ID, String name, String type, Float cr, Integer str, Integer dex, Integer con, Integer intl, Integer wis, Integer cha, Integer ac, Integer hp, String size, String desc, Integer userid, Date createdate, Date update, Boolean shared) {
-        this.ID = ID;
+    public Creatures(String name, String type, Float cr, Integer str, Integer dex, Integer con, Integer intl, Integer wis, Integer cha, Integer ac, Integer hp, String size, String description, Integer userid, Date createdate, Date updated, Boolean shared) {
         this.name = name;
         this.type = type;
         this.cr = cr;
@@ -38,19 +46,19 @@ public class Creatures {
         this.ac = ac;
         this.hp = hp;
         this.size = size;
-        this.desc = desc;
+        this.description = description;
         this.userid = userid;
         this.createdate = createdate;
-        this.update = update;
+        this.updated = updated;
         this.shared = shared;
+    }
+
+    public Creatures(){
+
     }
 
     public Integer getID() {
         return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
     }
 
     public String getName() {
@@ -149,12 +157,12 @@ public class Creatures {
         this.size = size;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getUserid() {
@@ -173,12 +181,12 @@ public class Creatures {
         this.createdate = createdate;
     }
 
-    public Date getUpdate() {
-        return update;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public void setUpdate(Date update) {
-        this.update = update;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     public Boolean getShared() {
