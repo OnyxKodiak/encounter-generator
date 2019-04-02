@@ -87,10 +87,6 @@ public class Treasures {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
-    }
-
     public Date getUpdated() {
         return updated;
     }

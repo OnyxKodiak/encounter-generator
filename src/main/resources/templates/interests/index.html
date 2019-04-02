@@ -8,11 +8,28 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<ul th:each="interest : ${interests}">
-    <li th:text="${interest.name}"></li>
-</ul>
+<a href="/interests/add">Add a Point of Interest</a> |
+<a href="/interests/remove">Remove a Point of Interest</a>
 
-<a href="/interests/add">Add a Point of Interest</a>
+<table class="table">
+
+    <tr>
+        <th>Description</th>
+        <th>UserID</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Shared</th>
+    </tr>
+
+    <tr th:each="interest : ${interests}">
+        <td th:text="${interest.description}"></td>
+        <td th:text="${interest.userid}"></td>
+        <td th:text="${interest.createdate}"></td>
+        <td th:text="${interest.updated}"></td>
+        <td th:text="${interest.shared}"></td>
+    </tr>
+
+</table>
 
 </body>
 </html>

@@ -13,6 +13,7 @@ public class Interests {
 
     @NotNull
     @Size(min=3, max=15)
+    private String name;
     private String description;
 
     private Integer userid;
@@ -20,7 +21,8 @@ public class Interests {
     private Date updated;
     private Boolean shared;
 
-    public Interests(String description, Integer userid, Date createdate, Date updated, Boolean shared) {
+    public Interests(String name, String description, Integer userid, Date createdate, Date updated, Boolean shared) {
+        this.name = name;
         this.description = description;
         this.userid = userid;
         this.createdate = createdate;
@@ -35,6 +37,10 @@ public class Interests {
     public Integer getId() {
         return id;
     }
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
 
     public String getDescription() {
         return description;
@@ -56,11 +62,7 @@ public class Interests {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
-    }
-
-    public Date getUpdate() {
+    public Date getUpdated() {
         return updated;
     }
 

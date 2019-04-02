@@ -10,7 +10,7 @@ public class Creatures {
 
     @Id
     @GeneratedValue
-    private Integer ID;
+    private Integer id;
 
     @NotNull
     @Size(min=3, max=15)
@@ -57,8 +57,8 @@ public class Creatures {
 
     }
 
-    public Integer getID() {
-        return ID;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -175,10 +175,6 @@ public class Creatures {
 
     public Date getCreatedate() {
         return createdate;
-    }
-
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
     }
 
     public Date getUpdated() {

@@ -8,11 +8,54 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<ul th:each="creature : ${creatures}">
-    <li th:text="${creature.name}"></li>
-</ul>
+<a href="/creatures/add">Add a Creature</a> |
+<a href="/creatures/remove">Remove a Creature</a>
 
-<a href="/creatures/add">Add a Creature</a>
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>CR</th>
+        <th>Str</th>
+        <th>Dex</th>
+        <th>Con</th>
+        <th>Int</th>
+        <th>Wis</th>
+        <th>Cha</th>
+        <th>AC</th>
+        <th>HP</th>
+        <th>Size</th>
+        <th>Description</th>
+        <th>UserID</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Shared</th>
+    </tr>
+
+    <tr th:each="creature : ${creatures}">
+        <td th:text="${creature.name}"></td>
+        <td th:text="${creature.type}"></td>
+        <td th:text="${creature.cr}"></td>
+        <td th:text="${creature.str}"></td>
+        <td th:text="${creature.dex}"></td>
+        <td th:text="${creature.con}"></td>
+        <td th:text="${creature.intl}"></td>
+        <td th:text="${creature.wis}"></td>
+        <td th:text="${creature.cha}"></td>
+        <td th:text="${creature.ac}"></td>
+        <td th:text="${creature.hp}"></td>
+        <td th:text="${creature.size}"></td>
+        <td th:text="${creature.description}"></td>
+        <td th:text="${creature.userid}"></td>
+        <td th:text="${creature.createdate}"></td>
+        <td th:text="${creature.updated}"></td>
+        <td th:text="${creature.shared}"></td>
+    </tr>
+
+</table>
+
+
 
 </body>
 </html>

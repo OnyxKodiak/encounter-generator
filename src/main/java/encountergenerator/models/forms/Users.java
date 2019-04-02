@@ -51,7 +51,4 @@ public class Users {
         return cratedate;
     }
 
-    public void setCratedate(String cratedate) {
-        this.cratedate = cratedate;
-    }
 }

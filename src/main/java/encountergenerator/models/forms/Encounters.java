@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Encounters {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Integer ID;
 
     private Integer level;
     private String environment;
@@ -36,7 +36,7 @@ public class Encounters {
 
     }
 
-    public Integer getId() { return id; }
+    public Integer getID() { return ID; }
 
     public Integer getLevel() {
         return level;

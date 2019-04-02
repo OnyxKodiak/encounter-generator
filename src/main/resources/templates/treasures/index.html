@@ -8,11 +8,34 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<ul th:each="treasure : ${treasures}">
-    <li th:text="${treasure.name}"></li>
-</ul>
+<a href="/treasures/add">Add Loot</a> |
+<a href="/treasures/remove">Remove Loot</a>
 
-<a href="/treasures/add">Add Loot</a>
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Description</th>
+        <th>UserID</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Shared</th>
+    </tr>
+
+    <tr th:each="treasure : ${treasures}">
+        <td th:text="${treasure.name}"></td>
+        <td th:text="${treasure.type}"></td>
+        <td th:text="${treasure.value}"></td>
+        <td th:text="${treasure.description}"></td>
+        <td th:text="${treasure.userid}"></td>
+        <td th:text="${treasure.createdate}"></td>
+        <td th:text="${treasure.updated}"></td>
+        <td th:text="${treasure.shared}"></td>
+    </tr>
+
+</table>
 
 </body>
 </html>
