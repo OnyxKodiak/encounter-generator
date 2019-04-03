@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" th:object="${creatures}">
+    <div class="form-group">
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="type">Type</label>
+        <input class="form-control" th:field="*{type}" />
+        <span th:errors="*{type}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="cr">CR</label>
+        <input class="form-control" th:field="*{cr}" />
+        <span th:errors="*{cr}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="str">Str</label>
+        <input class="form-control" th:field="*{str}" />
+        <span th:errors="*{str}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="dex">Dex</label>
+        <input class="form-control" th:field="*{dex}" />
+        <span th:errors="*{dex}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="con">Con</label>
+        <input class="form-control" th:field="*{con}" />
+        <span th:errors="*{con}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="intl">Int</label>
+        <input class="form-control" th:field="*{intl}" />
+        <span th:errors="*{intl}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="wis">Wis</label>
+        <input class="form-control" th:field="*{wis}" />
+        <span th:errors="*{wis}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="cha">Cha</label>
+        <input class="form-control" th:field="*{cha}" />
+        <span th:errors="*{cha}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="ac">AC</label>
+        <input class="form-control" th:field="*{ac}" />
+        <span th:errors="*{ac}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="hp">HP</label>
+        <input class="form-control" th:field="*{hp}" />
+        <span th:errors="*{hp}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="size">Size</label>
+        <input class="form-control" th:field="*{size}" />
+        <span th:errors="*{size}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="description">Description</label>
+        <input class="form-control" th:field="*{description}" />
+        <span th:errors="*{description}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="shared">Shared</label>
+        <input type="checkbox" class="form-control" th:field="*{shared}" />
+        <span th:errors="*{shared}" class="error"></span>
+    </div>
+
+    <input type="hidden" th:value="${creatures.id}" name="id" />
+    <input type="submit" value="Update Creature" />
+</form>
+
+</body>
+</html>

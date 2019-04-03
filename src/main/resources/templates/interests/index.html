@@ -27,6 +27,7 @@
         <td th:text="${interest.createdate}"></td>
         <td th:text="${interest.updated}"></td>
         <td th:text="${interest.shared}"></td>
+        <td><a th:href="@{'/interests/edit/'+${interest.id}}">Edit</a></td>
     </tr>
 
 </table>

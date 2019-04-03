@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -58,6 +55,42 @@ public class CreatureController {
             creaturesDao.delete(creatureId);
         }
 
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{creatureId}", method = RequestMethod.GET)
+    public String displayEditCreature(Model model, @PathVariable Integer creatureId) {
+        Creatures creatures = creaturesDao.findOne(creatureId);
+        if(creatures!=null){
+            model.addAttribute("title", "Edit - " + creatures.getName());
+            model.addAttribute("creatures", creatures);
+            return "creatures/edit";
+        }
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{creatureId}", method = RequestMethod.POST)
+    public String processEditCreature(Model model, @ModelAttribute @Valid Creatures creatures,
+                                      @RequestParam Integer id, Errors errors) {
+        if(creatures==null && errors.hasErrors()){
+            return "creatures/edit";
+        }
+        Creatures updateCreatures = creaturesDao.findOne(id);
+        updateCreatures.setName(creatures.getName());
+        updateCreatures.setType(creatures.getType());
+        updateCreatures.setCr(creatures.getCr());
+        updateCreatures.setStr(creatures.getStr());
+        updateCreatures.setDex(creatures.getDex());
+        updateCreatures.setCon(creatures.getCon());
+        updateCreatures.setIntl(creatures.getIntl());
+        updateCreatures.setWis(creatures.getWis());
+        updateCreatures.setCha(creatures.getCha());
+        updateCreatures.setAc(creatures.getAc());
+        updateCreatures.setHp(creatures.getHp());
+        updateCreatures.setSize(creatures.getSize());
+        updateCreatures.setDescription(creatures.getDescription());
+        updateCreatures.setShared(creatures.getShared());
+        creaturesDao.save(updateCreatures);
         return "redirect:";
     }
 

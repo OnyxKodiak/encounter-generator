@@ -51,6 +51,7 @@
         <td th:text="${creature.createdate}"></td>
         <td th:text="${creature.updated}"></td>
         <td th:text="${creature.shared}"></td>
+        <td><a th:href="@{'/creatures/edit/'+${creature.id}}">Edit</a></td>
     </tr>
 
 </table>

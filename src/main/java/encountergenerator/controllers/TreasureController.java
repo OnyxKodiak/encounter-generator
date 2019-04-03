@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -42,6 +39,7 @@ public class TreasureController {
         treasuresDao.save(treasures);
         return "redirect:";
     }
+
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveTreasure(Model model) {
         model.addAttribute("treasures", treasuresDao.findAll());
@@ -56,6 +54,33 @@ public class TreasureController {
             treasuresDao.delete(treasureId);
         }
 
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{treasureId}", method = RequestMethod.GET)
+    public String displayEditCreature(Model model, @PathVariable Integer treasureId) {
+        Treasures treasures = treasuresDao.findOne(treasureId);
+        if(treasures!=null){
+            model.addAttribute("title", "Edit - " + treasures.getName());
+            model.addAttribute("treasures", treasures);
+            return "treasures/edit";
+        }
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{treasureId}", method = RequestMethod.POST)
+    public String processEditCreature(Model model, @ModelAttribute @Valid Treasures treasures,
+                                      @RequestParam Integer id, Errors errors) {
+        if(treasures==null && errors.hasErrors()){
+            return "treasures/edit";
+        }
+        Treasures updateTreasures = treasuresDao.findOne(id);
+        updateTreasures.setName(treasures.getName());
+        updateTreasures.setValue(treasures.getValue());
+        updateTreasures.setType(treasures.getType());
+        updateTreasures.setDescription(treasures.getDescription());
+        updateTreasures.setShared(treasures.getShared());
+        treasuresDao.save(updateTreasures);
         return "redirect:";
     }
 }
