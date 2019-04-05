@@ -19,12 +19,14 @@
         <input class="form-control" th:field="*{password}" />
         <span th:errors="*{password}" class="error"></span>
     </div>
+    <div class="form-group">
+        <label th:for="verify">Verify Password</label>
+        <input class="form-control" th:field="*{verify}" />
+        <span th:errors="*{verify}" class="error"></span>
+    </div>
 
-    <input type="submit" value="Login" />
-
-    <a href="/login/register">Register</a>
+    <input type="submit" value="Register" />
 </form>
-
 
 </body>
 </html>
