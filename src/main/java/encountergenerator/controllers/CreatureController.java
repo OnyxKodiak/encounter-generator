@@ -91,7 +91,7 @@ public class CreatureController {
         updateCreatures.setDescription(creatures.getDescription());
         updateCreatures.setShared(creatures.getShared());
         creaturesDao.save(updateCreatures);
-        return "redirect:";
+        return "redirect:/creatures";
     }
 
 }

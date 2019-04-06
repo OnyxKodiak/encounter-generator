@@ -8,4 +8,7 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface LoginDao extends CrudRepository<Users, Integer> {
+
+    Users findByName(String name);
+
 }
