@@ -10,14 +10,29 @@
 </head>
 <body>
 
-<nav th:fragment="navigation">
-    <a href="/">Home</a> |
-    <a href="/creatures">Creatures</a> |
-    <a href="/encounters">Encounters</a> |
-    <a href="/interests">Interests</a> |
-    <a href="/treasures">Treasures</a> |
-    <a href="/login">Login</a>
-</nav>
+<div>
+    <div th:fragment="navigation">
+
+        <div th:if="${user}">
+            <nav class="user-nav">
+                <a href="/">Home</a> |
+                <a href="/creatures">Creatures</a> |
+                <a href="/encounters">Encounters</a> |
+                <a href="/interests">Interests</a> |
+                <a href="/treasures">Treasures</a> |
+                <a href="/login">Login</a>
+            </nav>
+        </div>
+    </div>
+
+    <div th:unless="${user}">
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/encounters">Encounters</a> |
+            <a href="/login">Login</a>
+        </nav>
+    </div>
+</div>
 
 </body>
 </html>
