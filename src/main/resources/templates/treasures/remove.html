@@ -9,7 +9,7 @@
 
 <form method="post">
 
-    <div th:each="treasure : ${treasures}" class="checkbox">
+    <div th:each="treasure : ${treasure}" class="checkbox">
         <input type="checkbox" name="treasureIds" th:value="${treasure.id}" th:id="${treasure.id}"/>
         <label th:for="${treasure.id}" th:text="${treasure.name}"></label>
         <br />

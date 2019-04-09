@@ -3,12 +3,14 @@ package encountergenerator.models.forms;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-public class Treasures {
+@Table(name="treasures")
+public class Treasure {
 
     @Id
     @GeneratedValue
@@ -26,7 +28,7 @@ public class Treasures {
     private Date updated;
     private Boolean shared;
 
-    public Treasures(String name, String type, Integer value, String description, Integer userid, Date createdate, Date updated, Boolean shared) {
+    public Treasure(String name, String type, Integer value, String description, Integer userid, Date createdate, Date updated, Boolean shared) {
         this.name = name;
         this.type = type;
         this.value = value;
@@ -37,7 +39,7 @@ public class Treasures {
         this.shared = shared;
     }
 
-    public Treasures(){
+    public Treasure(){
 
     }
 

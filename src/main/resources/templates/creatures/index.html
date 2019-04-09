@@ -8,8 +8,8 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<a href="/creatures/add">Add a Creature</a> |
-<a href="/creatures/remove">Remove a Creature</a>
+<a href="/creature/add">Add a Creature</a> |
+<a href="/creature/remove">Remove a Creature</a>
 
 <table class="table">
 
@@ -33,7 +33,7 @@
         <th>Shared</th>
     </tr>
 
-    <tr th:each="creature : ${creatures}">
+    <tr th:each="creature : ${creature}">
         <td th:text="${creature.name}"></td>
         <td th:text="${creature.type}"></td>
         <td th:text="${creature.cr}"></td>
@@ -51,7 +51,7 @@
         <td th:text="${creature.createdate}"></td>
         <td th:text="${creature.updated}"></td>
         <td th:text="${creature.shared}"></td>
-        <td><a th:href="@{'/creatures/edit/'+${creature.id}}">Edit</a></td>
+        <td><a th:href="@{'/creature/edit/'+${creature.id}}">Edit</a></td>
     </tr>
 
 </table>

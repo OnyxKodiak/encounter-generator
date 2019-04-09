@@ -8,8 +8,8 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<a href="/interests/add">Add a Point of Interest</a> |
-<a href="/interests/remove">Remove a Point of Interest</a>
+<a href="/interest/add">Add a Point of Interest</a> |
+<a href="/interest/remove">Remove a Point of Interest</a>
 
 <table class="table">
 
@@ -21,13 +21,13 @@
         <th>Shared</th>
     </tr>
 
-    <tr th:each="interest : ${interests}">
+    <tr th:each="interest : ${interest}">
         <td th:text="${interest.description}"></td>
         <td th:text="${interest.userid}"></td>
         <td th:text="${interest.createdate}"></td>
         <td th:text="${interest.updated}"></td>
         <td th:text="${interest.shared}"></td>
-        <td><a th:href="@{'/interests/edit/'+${interest.id}}">Edit</a></td>
+        <td><a th:href="@{'/interest/edit/'+${interest.id}}">Edit</a></td>
     </tr>
 
 </table>

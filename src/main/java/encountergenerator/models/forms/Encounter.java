@@ -3,7 +3,8 @@ package encountergenerator.models.forms;
 import javax.persistence.*;
 
 @Entity
-public class Encounters {
+@Table(name="encounters")
+public class Encounter {
     @Id
     @GeneratedValue
     private Integer Id;
@@ -19,7 +20,7 @@ public class Encounters {
     private Boolean loot;
     private Integer nummobs;
 
-    public Encounters(Integer partylevel, String environment, Integer partysize, Integer difficulty, Integer numencounters, Integer frequency, Integer userid, Boolean userselect, Boolean loot, Integer nummobs) {
+    public Encounter(Integer partylevel, String environment, Integer partysize, Integer difficulty, Integer numencounters, Integer frequency, Integer userid, Boolean userselect, Boolean loot, Integer nummobs) {
         this.partylevel = partylevel;
         this.environment = environment;
         this.partysize = partysize;
@@ -32,7 +33,7 @@ public class Encounters {
         this.nummobs = nummobs;
     }
 
-    public Encounters(){
+    public Encounter(){
 
     }
 

@@ -8,8 +8,8 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<a href="/treasures/add">Add Loot</a> |
-<a href="/treasures/remove">Remove Loot</a>
+<a href="/treasure/add">Add Loot</a> |
+<a href="/treasure/remove">Remove Loot</a>
 
 <table class="table">
 
@@ -24,7 +24,7 @@
         <th>Shared</th>
     </tr>
 
-    <tr th:each="treasure : ${treasures}">
+    <tr th:each="treasure : ${treasure}">
         <td th:text="${treasure.name}"></td>
         <td th:text="${treasure.type}"></td>
         <td th:text="${treasure.value}"></td>
@@ -33,7 +33,7 @@
         <td th:text="${treasure.createdate}"></td>
         <td th:text="${treasure.updated}"></td>
         <td th:text="${treasure.shared}"></td>
-        <td><a th:href="@{'/treasures/edit/'+${treasure.id}}">Edit</a></td>
+        <td><a th:href="@{'/treasure/edit/'+${treasure.id}}">Edit</a></td>
     </tr>
 
 </table>

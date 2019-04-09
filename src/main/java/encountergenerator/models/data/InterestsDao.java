@@ -1,12 +1,12 @@
 package encountergenerator.models.data;
 
-import encountergenerator.models.forms.Interests;
+import encountergenerator.models.forms.Interest;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface InterestsDao extends CrudRepository<Interests, Integer>{
+public interface InterestsDao extends CrudRepository<Interest, Integer>{
 
 }

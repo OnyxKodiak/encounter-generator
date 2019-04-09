@@ -1,7 +1,7 @@
 package encountergenerator.controllers;
 
 import encountergenerator.models.data.EncountersDao;
-import encountergenerator.models.forms.Encounters;
+import encountergenerator.models.forms.Encounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,14 +17,14 @@ public class EncounterController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String encounters(Model model){
-        model.addAttribute(new Encounters());
-        model.addAttribute("title", "Encounters");
+        model.addAttribute(new Encounter());
+        model.addAttribute("title", "Encounter");
         return "/encounters/index";
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String genEncounter(Model model){
-        model.addAttribute("title", "Encounters");
+        model.addAttribute("title", "Encounter");
         return "/encounters/index";
     }
 }

@@ -1,7 +1,7 @@
 package encountergenerator.controllers;
 
 import encountergenerator.models.data.CreaturesDao;
-import encountergenerator.models.forms.Creatures;
+import encountergenerator.models.forms.Creature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,24 +20,24 @@ public class CreatureController {
     @RequestMapping(value = "")
     public String creatures(Model model){
         model.addAttribute("creatures", creaturesDao.findAll());
-        model.addAttribute("title", "Creatures");
+        model.addAttribute("title", "Creature");
         return "creatures/index";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayaddCreature(Model model){
-        model.addAttribute(new Creatures());
+        model.addAttribute(new Creature());
         model.addAttribute("title", "Add Creature");
         return "creatures/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processaddCreature(Model model, @ModelAttribute @Valid Creatures creatures, Errors errors){
+    public String processaddCreature(Model model, @ModelAttribute @Valid Creature creature, Errors errors){
         if(errors.hasErrors()){
             model.addAttribute("title", "Add Creature");
-            return "creatures/add";
+            return "creature/add";
         }
-        creaturesDao.save(creatures);
+        creaturesDao.save(creature);
         return "redirect:";
     }
 
@@ -60,38 +60,38 @@ public class CreatureController {
 
     @RequestMapping(value = "edit/{creatureId}", method = RequestMethod.GET)
     public String displayEditCreature(Model model, @PathVariable Integer creatureId) {
-        Creatures creatures = creaturesDao.findOne(creatureId);
-        if(creatures!=null){
-            model.addAttribute("title", "Edit - " + creatures.getName());
-            model.addAttribute("creatures", creatures);
-            return "creatures/edit";
+        Creature creature = creaturesDao.findOne(creatureId);
+        if(creature !=null){
+            model.addAttribute("title", "Edit - " + creature.getName());
+            model.addAttribute("creature", creature);
+            return "creature/edit";
         }
         return "redirect:";
     }
 
     @RequestMapping(value = "edit/{creatureId}", method = RequestMethod.POST)
-    public String processEditCreature(Model model, @ModelAttribute @Valid Creatures creatures,
+    public String processEditCreature(Model model, @ModelAttribute @Valid Creature creature,
                                       @RequestParam Integer id, Errors errors) {
-        if(creatures==null && errors.hasErrors()){
-            return "creatures/edit";
+        if(creature ==null && errors.hasErrors()){
+            return "creature/edit";
         }
-        Creatures updateCreatures = creaturesDao.findOne(id);
-        updateCreatures.setName(creatures.getName());
-        updateCreatures.setType(creatures.getType());
-        updateCreatures.setCr(creatures.getCr());
-        updateCreatures.setStr(creatures.getStr());
-        updateCreatures.setDex(creatures.getDex());
-        updateCreatures.setCon(creatures.getCon());
-        updateCreatures.setIntl(creatures.getIntl());
-        updateCreatures.setWis(creatures.getWis());
-        updateCreatures.setCha(creatures.getCha());
-        updateCreatures.setAc(creatures.getAc());
-        updateCreatures.setHp(creatures.getHp());
-        updateCreatures.setSize(creatures.getSize());
-        updateCreatures.setDescription(creatures.getDescription());
-        updateCreatures.setShared(creatures.getShared());
-        creaturesDao.save(updateCreatures);
-        return "redirect:/creatures";
+        Creature updateCreature = creaturesDao.findOne(id);
+        updateCreature.setName(creature.getName());
+        updateCreature.setType(creature.getType());
+        updateCreature.setCr(creature.getCr());
+        updateCreature.setStr(creature.getStr());
+        updateCreature.setDex(creature.getDex());
+        updateCreature.setCon(creature.getCon());
+        updateCreature.setIntl(creature.getIntl());
+        updateCreature.setWis(creature.getWis());
+        updateCreature.setCha(creature.getCha());
+        updateCreature.setAc(creature.getAc());
+        updateCreature.setHp(creature.getHp());
+        updateCreature.setSize(creature.getSize());
+        updateCreature.setDescription(creature.getDescription());
+        updateCreature.setShared(creature.getShared());
+        creaturesDao.save(updateCreature);
+        return "redirect:/creature";
     }
 
 }

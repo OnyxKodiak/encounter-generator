@@ -14,22 +14,20 @@
 <div>
     <div th:fragment="navigation">
 
-        <div th:if="${user}">
-            <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form>
+        <div sec:authorize="isAuthenticated()">
+            <h1 th:inline="text">Hello <span sec:authentication="name"></span></h1>
+            <a href="/logout">Logout</a>
             <nav class="user-nav">
                 <a href="/">Home</a> |
-                <a href="/creatures">Creatures</a> |
+                <a href="/creature">Creatures</a> |
                 <a href="/encounters">Encounters</a> |
-                <a href="/interests">Interests</a> |
-                <a href="/treasures">Treasures</a> |
+                <a href="/interest">Interests</a> |
+                <a href="/treasure">Treasures</a> |
                 <a href="/login">Login</a>
             </nav>
         </div>
 
-        <div th:unless="${user}">
+        <div sec:authorize="!isAuthenticated()">
             <nav>
             <a href="/">Home</a> |
             <a href="/encounters">Encounters</a> |

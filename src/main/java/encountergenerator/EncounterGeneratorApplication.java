@@ -12,11 +12,6 @@ public class EncounterGeneratorApplication {
 		SpringApplication.run(EncounterGeneratorApplication.class, args);
 	}
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
 }
 
 

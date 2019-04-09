@@ -1,7 +1,7 @@
 package encountergenerator.controllers;
 
 import encountergenerator.models.data.InterestsDao;
-import encountergenerator.models.forms.Interests;
+import encountergenerator.models.forms.Interest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,23 +20,23 @@ public class InterestController {
     @RequestMapping(value = "")
     public String interests(Model model){
         model.addAttribute("interests", interestsDao.findAll());
-        model.addAttribute("title", "Interests");
+        model.addAttribute("title", "Interest");
         return "/interests/index";
     }
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayaddCInterest(Model model){
-        model.addAttribute(new Interests());
+        model.addAttribute(new Interest());
         model.addAttribute("title", "Add Point of Interest");
         return "interests/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processaddInterest(Model model, @ModelAttribute @Valid Interests interests, Errors errors){
+    public String processaddInterest(Model model, @ModelAttribute @Valid Interest interest, Errors errors){
         if(errors.hasErrors()){
             model.addAttribute("title", "Add Point of Interest");
-            return "interests/add";
+            return "interest/add";
         }
-        interestsDao.save(interests);
+        interestsDao.save(interest);
         return "redirect:";
     }
 
@@ -59,26 +59,26 @@ public class InterestController {
 
     @RequestMapping(value = "edit/{interestId}", method = RequestMethod.GET)
     public String displayEditInterest(Model model, @PathVariable Integer interestId) {
-        Interests interests = interestsDao.findOne(interestId);
-        if(interests!=null){
-            model.addAttribute("title", "Edit - " + interests.getName());
-            model.addAttribute("interests", interests);
-            return "interests/edit";
+        Interest interest = interestsDao.findOne(interestId);
+        if(interest !=null){
+            model.addAttribute("title", "Edit - " + interest.getName());
+            model.addAttribute("interest", interest);
+            return "interest/edit";
         }
         return "redirect:";
     }
 
     @RequestMapping(value = "edit/{interestId}", method = RequestMethod.POST)
-    public String processEditCreature(Model model, @ModelAttribute @Valid Interests interests,
+    public String processEditCreature(Model model, @ModelAttribute @Valid Interest interest,
                                       @RequestParam Integer id, Errors errors) {
-        if(interests==null && errors.hasErrors()){
-            return "interests/edit";
+        if(interest ==null && errors.hasErrors()){
+            return "interest/edit";
         }
-        Interests updateInterests = interestsDao.findOne(id);
-        updateInterests.setName(interests.getName());
-        updateInterests.setDescription(interests.getDescription());
-        updateInterests.setShared(interests.getShared());
-        interestsDao.save(updateInterests);
+        Interest updateInterest = interestsDao.findOne(id);
+        updateInterest.setName(interest.getName());
+        updateInterest.setDescription(interest.getDescription());
+        updateInterest.setShared(interest.getShared());
+        interestsDao.save(updateInterest);
         return "redirect:";
     }
 }
