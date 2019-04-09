@@ -18,6 +18,11 @@
         <span th:errors="*{description}" class="error"></span>
     </div>
     <div class="form-group">
+        <label th:for="environment">Environment</label>
+        <input class="form-control" th:field="*{environment}" />
+        <span th:errors="*{environment}" class="error"></span>
+    </div>
+    <div class="form-group">
         <label th:for="userid">UserID</label>
         <input class="form-control" th:field="*{userid}" />
         <span th:errors="*{userid}" class="error"></span>

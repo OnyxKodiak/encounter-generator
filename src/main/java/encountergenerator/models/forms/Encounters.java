@@ -6,21 +6,21 @@ import javax.persistence.*;
 public class Encounters {
     @Id
     @GeneratedValue
-    private Integer ID;
+    private Integer Id;
 
-    private Integer level;
+    private Integer partylevel;
     private String environment;
     private Integer partysize;
     private Integer difficulty;
     private Integer numencounters;
     private Integer frequency;
     private Integer userid;
-    private Integer userselect;
+    private Boolean userselect;
     private Boolean loot;
     private Integer nummobs;
 
-    public Encounters(Integer level, String environment, Integer partysize, Integer difficulty, Integer numencounters, Integer frequency, Integer userid, Integer userselect, Boolean loot, Integer nummobs) {
-        this.level = level;
+    public Encounters(Integer partylevel, String environment, Integer partysize, Integer difficulty, Integer numencounters, Integer frequency, Integer userid, Boolean userselect, Boolean loot, Integer nummobs) {
+        this.partylevel = partylevel;
         this.environment = environment;
         this.partysize = partysize;
         this.difficulty = difficulty;
@@ -36,14 +36,14 @@ public class Encounters {
 
     }
 
-    public Integer getID() { return ID; }
+    public Integer getId() { return Id; }
 
-    public Integer getLevel() {
-        return level;
+    public Integer getPartylevel() {
+        return partylevel;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
+    public void setPartylevel(Integer partylevel) {
+        this.partylevel = partylevel;
     }
 
     public String getEnvironment() {
@@ -94,11 +94,11 @@ public class Encounters {
         this.userid = userid;
     }
 
-    public Integer getUserselect() {
+    public Boolean getUserselect() {
         return userselect;
     }
 
-    public void setUserselect(Integer userselect) {
+    public void setUserselect(Boolean userselect) {
         this.userselect = userselect;
     }
 

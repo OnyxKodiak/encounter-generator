@@ -5,6 +5,7 @@
     <title th:text="${title}">Encounter Generator</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https;/ajax.googleeapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
@@ -14,6 +15,10 @@
     <div th:fragment="navigation">
 
         <div th:if="${user}">
+            <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
             <nav class="user-nav">
                 <a href="/">Home</a> |
                 <a href="/creatures">Creatures</a> |
@@ -23,14 +28,14 @@
                 <a href="/login">Login</a>
             </nav>
         </div>
-    </div>
 
-    <div th:unless="${user}">
-        <nav>
+        <div th:unless="${user}">
+            <nav>
             <a href="/">Home</a> |
             <a href="/encounters">Encounters</a> |
             <a href="/login">Login</a>
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
 

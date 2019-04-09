@@ -15,15 +15,17 @@ public class Interests {
     @Size(min=3, max=15)
     private String name;
     private String description;
+    private String environment;
 
     private Integer userid;
     private Date createdate;
     private Date updated;
     private Boolean shared;
 
-    public Interests(String name, String description, Integer userid, Date createdate, Date updated, Boolean shared) {
+    public Interests(String name, String description, String environment, Integer userid, Date createdate, Date updated, Boolean shared) {
         this.name = name;
         this.description = description;
+        this.environment = environment;
         this.userid = userid;
         this.createdate = createdate;
         this.updated = updated;
@@ -76,5 +78,13 @@ public class Interests {
 
     public void setShared(Boolean shared) {
         this.shared = shared;
+    }
+
+    public String getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(String environment) {
+        this.environment = environment;
     }
 }

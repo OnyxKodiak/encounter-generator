@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
 @Controller
 @RequestMapping(value = "login")
-public class LoginController extends AbstractController {
+public class LoginController{
 
     @Autowired
     private LoginDao loginDao;
@@ -85,5 +86,21 @@ public class LoginController extends AbstractController {
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
         return "redirect:/login";
+    }
+
+    public static final String userSessionKey = "user_id";
+
+    protected Users getUserFromSession(HttpSession session) {
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        return userId == null ? null : loginDao.findOne(userId);
+    }
+
+    protected void setUserInSession(HttpSession session, Users users) {
+        session.setAttribute(userSessionKey, users.getId());
+    }
+
+    @ModelAttribute("users")
+    public Users getUserForModel(HttpServletRequest request) {
+        return getUserFromSession(request.getSession());
     }
 }

@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
-
-<h1 th:text="${title}">Encounters</h1>
+<h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" th:object="${encounters}">
+    <div class="form-group">
+        <label th:for="partylevel">Party Level</label>
+        <input type="number" class="form-control" th:field="*{partylevel}" />
+        <span th:errors="*{partylevel}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="environment">Environment</label>
+        <input class="form-control" th:field="*{environment}" />
+        <span th:errors="*{environment}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="partysize">Party Size</label>
+        <input  type="number" class="form-control" th:field="*{partysize}" />
+        <span th:errors="*{partysize}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="difficulty">Difficulty</label>
+        <input class="form-control" th:field="*{difficulty}" />
+        <span th:errors="*{difficulty}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="numencounters">Number of Encounters</label>
+        <input  type="number" class="form-control" th:field="*{numencounters}" />
+        <span th:errors="*{numencounters}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="frequency">Frequency</label>
+        <input class="form-control" th:field="*{frequency}" />
+        <span th:errors="*{frequency}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="nummobs">Number of Creatures</label>
+        <input  type="number" class="form-control" th:field="*{nummobs}" />
+        <span th:errors="*{nummobs}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="userselect">User Content</label>
+        <input type="checkbox" class="form-control" th:field="*{userselect}" />
+        <span th:errors="*{userselect}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="loot">Loot</label>
+        <input type="checkbox" class="form-control" th:field="*{loot}" />
+        <span th:errors="*{loot}" class="error"></span>
+    </div>
+
+
+    <input type="submit" value="Add Point of Interest" />
+</form>
 
 </body>
 </html>

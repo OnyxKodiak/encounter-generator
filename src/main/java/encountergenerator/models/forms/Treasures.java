@@ -1,6 +1,8 @@
 package encountergenerator.models.forms;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -91,7 +93,7 @@ public class Treasures {
         return updated;
     }
 
-    public void setUpdate(Date update) {
+    public void setUpdated(Date updated) {
         this.updated = updated;
     }
 
